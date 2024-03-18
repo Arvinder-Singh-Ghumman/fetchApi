@@ -10,7 +10,6 @@ async function getData() {
     // Fetching data
     const response = await fetch("https://fakestoreapi.com/products");
     let data = await response.json();
-    console.log(data);
 
     // Getting filter and sort selected values
     let category = document.querySelector("#category").value;
