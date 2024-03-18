@@ -14,10 +14,11 @@ async function getData() {
     // Getting filter and sort selected values
     let category = document.querySelector("#category").value;
     let sort = document.querySelector("#sort").value;
-
-    // Sorting the data via category
+    if(category!="all")
     data = await data.filter((el) => el.category == category);
-    data = await sort==0?data.sort((a, b) => a.title.localeCompare(b.title)):data.sort((a, b) => b.title.localeCompare(a.title));
+  // Sorting the data via category
+    if(sort!="default")
+      data = await sort==0?data.sort((a, b) => a.price-b.price):data.sort((a, b) => b.price-a.price);
     document.querySelector("#cards").textContent="";
 
     if(data.length<1){
