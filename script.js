@@ -28,20 +28,24 @@ async function getData() {
     }
     
     data.forEach((element) => {
-      createCard(element.title, element.description, element.price, element.image);
+      createCard(element.title, element.description, element.price, element.rating, element.image);
     });
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
 
-function createCard(title, description, price, imageSrc) {
+function createCard(title, description, price, rating, imageSrc) {
   // Create card elements
   const card = document.createElement("div");
   card.classList.add("card");
 
   const cardTitle = document.createElement("h2");
   cardTitle.textContent = title;
+
+  const cardRating = document.createElement("p");
+  cardRating.classList.add("rating");
+  cardRating.textContent = rating.rate+" / 5";
 
   const descr = document.createElement("p");
   descr.textContent = description;
@@ -58,6 +62,8 @@ function createCard(title, description, price, imageSrc) {
   card.appendChild(cardTitle);
   card.appendChild(cardImage);
   card.appendChild(cardPrice);
+  console.log(rating)
+  card.appendChild(cardRating);
   card.appendChild(document.createElement("br"));
   card.appendChild(descr);
 
